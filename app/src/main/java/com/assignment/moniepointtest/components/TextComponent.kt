@@ -117,7 +117,8 @@ fun MultilinePlaceholderTextComponent(placeholderTile: String, textColor: Color 
         textAlign = TextAlign.Start,
         fontWeight = FontWeight.Normal
     )
-       TextComponent(
+
+    TextComponent(
             text = placeholderTile,
             fontSize = textSize.toInt(),
             textStyle = textStyle,
@@ -193,92 +194,6 @@ fun MultilineTextFieldComponent(text: String, readOnly: Boolean = false, modifie
         }
     })
 }
-
-
-
-@Composable
-fun HomeScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Yellow),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        // Icon on the screen
-        Icon(
-            imageVector = Icons.Default.Home,
-            contentDescription = "home",
-            tint = Color(0xFF0F9D58)
-        )
-        // Text on the screen
-        Text(text = "Home", color = Color.Black)
-    }
-}
-
-@Composable
-fun CalculateScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        // Icon on the screen
-        Icon(
-            imageVector = Icons.Default.Search,
-            contentDescription = "calculate",
-            tint = Color(0xFF0F9D58)
-        )
-        // Text on the screen
-        Text(text = "Calculate", color = Color.Black)
-    }
-}
-
-@Composable
-fun ShipmentScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        // Icon on the screen
-        Icon(
-            imageVector = Icons.Default.Person,
-            contentDescription = "shipment",
-            tint = Color(0xFF0F9D58)
-        )
-        // Text on the screen
-        Text(text = "Shipment", color = Color.Black)
-    }
-}
-
-
-@Composable
-fun ProfileScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        // Icon on the screen
-        Icon(
-            imageVector = Icons.Default.Person,
-            contentDescription = "Profile",
-            tint = Color(0xFF0F9D58)
-        )
-        // Text on the screen
-        Text(text = "Profile", color = Color.Black)
-    }
-}
-
-
-
 
 
 

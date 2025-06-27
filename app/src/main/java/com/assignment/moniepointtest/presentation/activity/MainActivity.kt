@@ -44,14 +44,14 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.assignment.moniepointtest.R
 import com.assignment.moniepointtest.components.monaSansFamily
+import com.assignment.moniepointtest.presentation.calculate.CalculateScreen
+import com.assignment.moniepointtest.presentation.home.HomeScreen
+import com.assignment.moniepointtest.presentation.profile.ProfileScreen
+import com.assignment.moniepointtest.presentation.shipment.ShipmentScreen
 import com.assignment.moniepointtest.ui.theme.DarkGray
 import com.assignment.moniepointtest.ui.theme.MoniePointTestTheme
 import com.assignment.moniepointtest.ui.theme.PrimaryColor
-import presentations.components.CalculateScreen
-import presentations.components.HomeScreen
 import presentations.components.ImageComponent
-import presentations.components.ProfileScreen
-import presentations.components.ShipmentScreen
 import presentations.components.TextComponent
 
 class MainActivity : ComponentActivity() {
@@ -162,11 +162,7 @@ private fun RowScope.TabNavigationItem(route: String, navController: NavHostCont
     var selectionTint by remember { mutableStateOf(PrimaryColor) }
     var handleTint by remember { mutableStateOf(PrimaryColor) }
 
-    // observe the backstack
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-
-    // observe current route to change the icon
-    // color,label color when navigated
     val currentRoute = navBackStackEntry?.destination?.route
 
     if (currentRoute == "home" && route == currentRoute) {
