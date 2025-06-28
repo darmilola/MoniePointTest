@@ -14,8 +14,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,21 +28,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.assignment.moniepointtest.R
+import com.assignment.moniepointtest.components.monaSansFamily
+import com.assignment.moniepointtest.ui.theme.DarkGray
 import com.assignment.moniepointtest.ui.theme.Orange
 import com.assignment.moniepointtest.ui.theme.PrimaryColor
 import presentations.components.ImageComponent
+import presentations.components.TextComponent
 import presentations.components.TextFieldComponent
 
 @Composable
-fun SearchBarWidget() {
+fun SearchBarWidget(onFocused:() -> Unit, onValueChange:(String) -> Unit) {
     var text by remember { mutableStateOf("") }
-    var borderStroke by remember { mutableStateOf(BorderStroke(1.dp, color  = Color.Gray)) }
-
     val modifier  = Modifier
-        .padding(end = 10.dp, start = 10.dp, top = 20.dp)
         .fillMaxWidth()
         .height(50.dp)
         .background(color = Color.White, shape = CircleShape)
@@ -51,16 +56,10 @@ fun SearchBarWidget() {
 
         Box(modifier = Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center){
             ImageComponent(modifier = Modifier
-                .size(18.dp).clickable {
-                   /* if(iconResValue == "drawable/back_arrow.png"){
-                        text = ""
-                        iconResValue = "drawable/search_icon.png"
-                        onBackPressed()
-                    }*/
-                }, imageRes = R.drawable.search, colorFilter = ColorFilter.tint(color = PrimaryColor))
+                .size(18.dp), imageRes = R.drawable.search, colorFilter = ColorFilter.tint(color = PrimaryColor))
         }
 
-        Box(modifier = Modifier.fillMaxHeight().weight(6f), contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier.fillMaxHeight().weight(5f), contentAlignment = Alignment.Center) {
             TextFieldComponent(
                 text = text,
                 readOnly = false,
@@ -69,24 +68,67 @@ fun SearchBarWidget() {
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 onValueChange = {
                     text = it
-                    //onValueChange(it)
+                    onValueChange(it)
                 },
                 isSingleLine = true,
                 placeholderText = "Enter the receipt number...",
                 onFocusChange = { it ->
-                    borderStroke = if (it) {
-                        BorderStroke(1.dp, color = PrimaryColor)
-                    } else {
-                        BorderStroke(1.dp, color = Color.Gray)
+                    if (it){
+                        onFocused()
                     }
-                },
+                   },
                 isPasswordField = false,
                 placeholderTextSize = 17f
             )
         }
         Box(modifier = Modifier.fillMaxHeight().weight(1f).padding(5.dp), contentAlignment = Alignment.Center){
 
-            Box(modifier = Modifier.fillMaxSize().background(color = Orange, shape = CircleShape), contentAlignment = Alignment.Center){
+            Box(modifier = Modifier.size(45.dp).background(color = Orange, shape = CircleShape), contentAlignment = Alignment.Center){
+
+                ImageComponent(modifier = Modifier
+                    .size(18.dp), imageRes = R.drawable.filter, colorFilter = ColorFilter.tint(color = Color.White))
+            }
+        }
+    }
+}
+
+
+@Composable
+fun HomeSearchBarWidget(onFocused:() -> Unit) {
+    val modifier  = Modifier
+        .fillMaxWidth()
+        .height(50.dp)
+        .background(color = Color.White, shape = CircleShape)
+
+    Row(modifier = modifier,
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.CenterVertically) {
+
+        Box(modifier = Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center){
+            ImageComponent(modifier = Modifier
+                .size(18.dp), imageRes = R.drawable.search, colorFilter = ColorFilter.tint(color = PrimaryColor))
+        }
+
+        Box(modifier = Modifier.fillMaxHeight().weight(6f), contentAlignment = Alignment.Center) {
+            TextComponent(
+                text = "Enter the receipt number...",
+                fontSize = 18,
+                textStyle = MaterialTheme.typography.titleMedium,
+                textColor = DarkGray,
+                textAlign = TextAlign.Left,
+                fontWeight = FontWeight.Normal,
+                fontFamily = monaSansFamily,
+                lineHeight = 30,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                textModifier = Modifier.wrapContentHeight().fillMaxWidth().padding(end = 10.dp).clickable {
+                    onFocused()
+                },
+            )
+        }
+        Box(modifier = Modifier.fillMaxHeight().weight(1f).padding(5.dp), contentAlignment = Alignment.Center){
+
+            Box(modifier = Modifier.size(45.dp).background(color = Orange, shape = CircleShape), contentAlignment = Alignment.Center){
 
                 ImageComponent(modifier = Modifier
                     .size(18.dp), imageRes = R.drawable.filter, colorFilter = ColorFilter.tint(color = Color.White))

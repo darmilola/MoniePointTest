@@ -1,9 +1,11 @@
-package com.assignment.moniepointtest.presentation.activity
+package com.assignment.moniepointtest.presentation.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,7 +13,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -47,6 +48,7 @@ import com.assignment.moniepointtest.components.monaSansFamily
 import com.assignment.moniepointtest.presentation.calculate.CalculateScreen
 import com.assignment.moniepointtest.presentation.home.HomeScreen
 import com.assignment.moniepointtest.presentation.profile.ProfileScreen
+import com.assignment.moniepointtest.presentation.searchReceiptNumber.SearchReceiptScreen
 import com.assignment.moniepointtest.presentation.shipment.ShipmentScreen
 import com.assignment.moniepointtest.ui.theme.DarkGray
 import com.assignment.moniepointtest.ui.theme.MoniePointTestTheme
@@ -80,28 +82,28 @@ class MainActivity : ComponentActivity() {
                                         containerColor = Color.White
                                     ) {
                                         TabNavigationItem(
-                                            "home",
+                                            Screen.HomeScreen.route,
                                             navController,
                                             iconRes = R.drawable.home,
                                             imageSize = 22,
                                             title = "Home"
                                         )
                                         TabNavigationItem(
-                                            "calculate",
+                                            Screen.CalculateScreen.route,
                                             navController,
                                             iconRes = R.drawable.keys,
                                             imageSize = 22,
                                             title = "Calculate"
                                         )
                                         TabNavigationItem(
-                                            "shipment",
+                                            Screen.ShipmentScreen.route,
                                             navController,
                                             iconRes = R.drawable.time,
                                             imageSize = 22,
                                             title = "Shipment"
                                         )
                                         TabNavigationItem(
-                                            "profile",
+                                            Screen.ProfileScreen.route,
                                             navController,
                                             iconRes = R.drawable.user,
                                             imageSize = 22,
@@ -121,43 +123,55 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 fun NavHostContainer(
     navController: NavHostController,
     padding: PaddingValues
 ) {
 
-    NavHost(
-        navController = navController,
+    SharedTransitionLayout() {
+        NavHost(
+            navController = navController,
 
-        // set the start destination as home
-        startDestination = "home",
+            // set the start destination as home
+            startDestination = Screen.HomeScreen.route,
 
-        // Set the padding provided by scaffold
-        modifier = Modifier.padding(paddingValues = padding),
+            // Set the padding provided by scaffold
+            modifier = Modifier.padding(paddingValues = padding),
 
-        builder = {
+            builder = {
 
-            // route : Home
-            composable("home") {
-                HomeScreen()
-            }
+                // route : Home
+                composable(Screen.HomeScreen.route) {
+                    HomeScreen(onEnterReceiptFocused = {
+                        navController.navigate(Screen.SearchReceiptScreen.route)
+                    }, this@SharedTransitionLayout,this@composable)
+                }
 
-            // route : calculate
-            composable("calculate") {
-                CalculateScreen()
-            }
+                // route : calculate
+                composable(Screen.CalculateScreen.route) {
+                    CalculateScreen()
+                }
 
-            // route : shipment
-            composable("shipment") {
-                ShipmentScreen()
-            }
+                // route : shipment
+                composable(Screen.ShipmentScreen.route) {
+                    ShipmentScreen()
+                }
 
-            // route : profile
-            composable("profile") {
-                ProfileScreen()
-            }
-        })
+                // route : profile
+                composable(Screen.ProfileScreen.route) {
+                    ProfileScreen()
+                }
+
+                // route : Search Receipt Number
+                composable(Screen.SearchReceiptScreen.route) {
+                    SearchReceiptScreen(onBackPressed = {
+                        navController.popBackStack()
+                    },this@SharedTransitionLayout,this@composable)
+                }
+            })
+    }
 }
 
 @Composable
@@ -168,20 +182,20 @@ private fun RowScope.TabNavigationItem(route: String, navController: NavHostCont
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    if (currentRoute == "home" && route == currentRoute) {
+    if (currentRoute == Screen.HomeScreen.route && route == currentRoute) {
         selectionTint = PrimaryColor
         handleTint = PrimaryColor
     }
-    else  if (currentRoute == "calculate" && route == currentRoute) {
+    else  if (currentRoute == Screen.CalculateScreen.route && route == currentRoute) {
         selectionTint = PrimaryColor
         handleTint = PrimaryColor
     }
-    else if (currentRoute == "shipment" && route == currentRoute) {
+    else if (currentRoute == Screen.ShipmentScreen.route && route == currentRoute) {
         selectionTint = PrimaryColor
         handleTint = PrimaryColor
 
     }
-    else if (currentRoute == "profile" && route == currentRoute) {
+    else if (currentRoute == Screen.ProfileScreen.route && route == currentRoute) {
         selectionTint = PrimaryColor
         handleTint = PrimaryColor
 
