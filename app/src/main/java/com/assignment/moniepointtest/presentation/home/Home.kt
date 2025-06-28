@@ -120,7 +120,7 @@ fun HomeScreen(
 
                         Card(
                             colors = CardDefaults.cardColors(containerColor = Color.White),
-                            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                             shape = RoundedCornerShape(15.dp),
                             modifier = Modifier.fillMaxWidth().height(280.dp)
                         ) {
