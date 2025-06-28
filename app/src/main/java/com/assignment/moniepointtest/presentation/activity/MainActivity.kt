@@ -64,6 +64,9 @@ class MainActivity : ComponentActivity() {
                 Surface(color = Color.White) {
                     // Scaffold Component
                     Scaffold(
+                        topBar = {
+                          Box(modifier = Modifier.height(50.dp).fillMaxWidth().background(color = PrimaryColor))
+                        },
                         // Bottom navigation
                         bottomBar = {
                             Card(colors = CardDefaults.cardColors(containerColor = Color.White),
