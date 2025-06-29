@@ -43,7 +43,7 @@ import presentations.components.TextComponent
 
 
 @Composable
-public fun ButtonComponent(modifier: Modifier, buttonText: String, borderStroke: BorderStroke?, shape: Shape, colors: ButtonColors, textColor: Color, fontSize: Int, style: TextStyle, onClick: ()-> Unit) {
+public fun ButtonComponent(modifier: Modifier, buttonText: String, borderStroke: BorderStroke?, shape: Shape, colors: ButtonColors, textColor: Color, fontSize: Int, style: TextStyle = TextStyle(), onClick: ()-> Unit) {
        Button(
              onClick = {
                   onClick()
