@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -39,7 +40,7 @@ fun TopBarProfile(){
                 Box(Modifier.size(50.dp), contentAlignment = Alignment.Center) {
                     Box(
                         Modifier
-                            .size(50.dp)
+                            .size(40.dp)
                             .background(color = Color.Transparent)
                     ) {
                         val modifier = Modifier
@@ -55,11 +56,11 @@ fun TopBarProfile(){
                 Row(modifier = Modifier.fillMaxWidth().weight(1f)) {
 
                     Box(
-                        modifier = Modifier.fillMaxHeight().width(25.dp),
+                        modifier = Modifier.fillMaxHeight().width(25.dp).padding(top = 3.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         ImageComponent(
-                            modifier = Modifier.size(14.dp),
+                            modifier = Modifier.size(16.dp),
                             imageRes = R.drawable.navigation,
                             colorFilter = ColorFilter.tint(Color.LightGray)
                         )

@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -73,40 +75,36 @@ class MainActivity : ComponentActivity() {
                         bottomBar = {
                             Card(colors = CardDefaults.cardColors(containerColor = Color.White),
                                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-                                shape = RoundedCornerShape(0.dp)
+                                shape = RoundedCornerShape(0.dp),modifier = Modifier.height(115.dp)
                             ) {
                                     NavigationBar(
-                                        modifier = Modifier.padding(0.dp).height(130.dp),
                                         tonalElevation = 10.dp,
                                         // set background color
+                                        modifier = Modifier.fillMaxSize(),
                                         containerColor = Color.White
                                     ) {
                                         TabNavigationItem(
                                             Screen.HomeScreen.route,
                                             navController,
-                                            iconRes = R.drawable.home,
-                                            imageSize = 22,
+                                            iconRes = R.drawable.hut,
                                             title = "Home"
                                         )
                                         TabNavigationItem(
                                             Screen.CalculateScreen.route,
                                             navController,
-                                            iconRes = R.drawable.keys,
-                                            imageSize = 22,
+                                            iconRes = R.drawable.math,
                                             title = "Calculate"
                                         )
                                         TabNavigationItem(
                                             Screen.ShipmentScreen.route,
                                             navController,
                                             iconRes = R.drawable.time,
-                                            imageSize = 22,
                                             title = "Shipment"
                                         )
                                         TabNavigationItem(
                                             Screen.ProfileScreen.route,
                                             navController,
-                                            iconRes = R.drawable.user,
-                                            imageSize = 22,
+                                            iconRes = R.drawable.avatar,
                                             title = "Profile"
                                         )
 
@@ -175,7 +173,7 @@ fun NavHostContainer(
 }
 
 @Composable
-private fun RowScope.TabNavigationItem(route: String, navController: NavHostController, iconRes: Int, imageSize: Int = 30, title: String = "Home") {
+private fun RowScope.TabNavigationItem(route: String, navController: NavHostController, iconRes: Int, title: String = "Home") {
     var selectionTint by remember { mutableStateOf(PrimaryColor) }
     var handleTint by remember { mutableStateOf(PrimaryColor) }
 
@@ -205,7 +203,7 @@ private fun RowScope.TabNavigationItem(route: String, navController: NavHostCont
     }
 
     NavigationBarItem(
-        modifier = Modifier.padding(bottom = 30.dp).height(50.dp),
+        modifier = Modifier.padding(0.dp).height(80.dp),
         selected = currentRoute == route,
         // navigate on click
         onClick = {
@@ -214,16 +212,29 @@ private fun RowScope.TabNavigationItem(route: String, navController: NavHostCont
         // Icon of navItem
         icon = {
             Column(verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.CenterHorizontally) {
+                horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
 
-                Box(modifier = Modifier.fillMaxWidth().height(4.dp)
+                Box(modifier = Modifier.fillMaxWidth().height(5.dp)
                     .background(color = handleTint), contentAlignment = Alignment.Center){}
 
-                Box(modifier = Modifier.fillMaxWidth().fillMaxHeight(), contentAlignment = Alignment.Center) {
+                Box(modifier = Modifier.fillMaxWidth().height(45.dp), contentAlignment = Alignment.Center) {
                     ImageComponent(
-                        modifier = Modifier.size(imageSize.dp),
+                        modifier = Modifier.size(24.dp),
                         imageRes = iconRes,
                         colorFilter = ColorFilter.tint(selectionTint)
+                    )
+                }
+                Box(modifier = Modifier.fillMaxWidth().height(20.dp), contentAlignment = Alignment.TopCenter) {
+                    TextComponent(
+                        text = title,
+                        fontSize = 14,
+                        textStyle = TextStyle(),
+                        textColor = selectionTint,
+                        textAlign = TextAlign.Left,
+                        fontWeight = FontWeight.SemiBold,
+                        lineHeight = 20,
+                        fontFamily = monaSansFamily,
+                        textModifier = Modifier
                     )
                 }
             }
@@ -232,21 +243,19 @@ private fun RowScope.TabNavigationItem(route: String, navController: NavHostCont
 
         // label
         label = {
-            TextComponent(
+        /*    TextComponent(
                 text = title,
                 fontSize = 14,
                 textStyle = TextStyle(),
                 textColor = selectionTint,
                 textAlign = TextAlign.Left,
                 fontWeight = FontWeight.SemiBold,
-                lineHeight = 30,
+                lineHeight = 20,
                 fontFamily = monaSansFamily,
-                textModifier = Modifier.padding(
-                    end = 10.dp,
-                    start = 10.dp
-                ))
+                textModifier = Modifier.background(color = Color.Red).padding(0.dp))*/
+
         },
-        alwaysShowLabel = true,
+        alwaysShowLabel = false,
 
         colors = NavigationBarItemDefaults.colors(
             selectedIconColor = Color.Red,

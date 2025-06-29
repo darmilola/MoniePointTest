@@ -41,9 +41,9 @@ fun SearchShipmentNumberWidget(searchReceiptItem: SearchReceiptItem){
 
     val modifier  = Modifier
         .fillMaxWidth()
-        .height(80.dp)
+        .height(70.dp)
 
-    Column(modifier = Modifier.fillMaxWidth().height(100.dp).padding(start = 15.dp, end = 15.dp)) {
+    Column(modifier = Modifier.fillMaxWidth().height(80.dp).padding(start = 10.dp, end = 10.dp)) {
 
         Row(
             modifier = modifier,
@@ -73,7 +73,7 @@ fun SearchShipmentNumberWidget(searchReceiptItem: SearchReceiptItem){
                 ) {
                     TextComponent(
                         text = searchReceiptItem.itemName,
-                        fontSize = 18,
+                        fontSize = 16,
                         textStyle = MaterialTheme.typography.titleMedium,
                         textColor = Color.Black,
                         textAlign = TextAlign.Left,
@@ -91,7 +91,7 @@ fun SearchShipmentNumberWidget(searchReceiptItem: SearchReceiptItem){
                 ) {
                     TextComponent(
                         text = searchReceiptItem.receiptNumber,
-                        fontSize = 16,
+                        fontSize = 14,
                         textStyle = MaterialTheme.typography.titleMedium,
                         textColor = DarkGray,
                         textAlign = TextAlign.Left,
@@ -110,7 +110,7 @@ fun SearchShipmentNumberWidget(searchReceiptItem: SearchReceiptItem){
 
                     TextComponent(
                         text = searchReceiptItem.fromCountry,
-                        fontSize = 16,
+                        fontSize = 14,
                         textStyle = MaterialTheme.typography.titleMedium,
                         textColor = DarkGray,
                         textAlign = TextAlign.Left,
@@ -130,7 +130,7 @@ fun SearchShipmentNumberWidget(searchReceiptItem: SearchReceiptItem){
 
                     TextComponent(
                         text = searchReceiptItem.toCountry,
-                        fontSize = 16,
+                        fontSize = 14,
                         textStyle = MaterialTheme.typography.titleMedium,
                         textColor = DarkGray,
                         textAlign = TextAlign.Left,

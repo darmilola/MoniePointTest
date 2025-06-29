@@ -50,16 +50,14 @@ fun SearchBarWidget(onFocused:() -> Unit, onValueChange:(String) -> Unit) {
         .height(50.dp)
         .background(color = Color.White, shape = CircleShape)
 
-    Row(modifier = modifier,
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically) {
+    Box(modifier = modifier) {
 
-        Box(modifier = Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center){
+        Box(modifier = Modifier.height(50.dp).width(40.dp), contentAlignment = Alignment.Center){
             ImageComponent(modifier = Modifier
-                .size(18.dp), imageRes = R.drawable.search, colorFilter = ColorFilter.tint(color = PrimaryColor))
+                .size(16.dp), imageRes = R.drawable.search, colorFilter = ColorFilter.tint(color = PrimaryColor))
         }
 
-        Box(modifier = Modifier.fillMaxHeight().weight(5f), contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier.fillMaxSize().padding(start = 40.dp, end = 50.dp), contentAlignment = Alignment.Center) {
             TextFieldComponent(
                 text = text,
                 readOnly = false,
@@ -78,12 +76,12 @@ fun SearchBarWidget(onFocused:() -> Unit, onValueChange:(String) -> Unit) {
                     }
                    },
                 isPasswordField = false,
-                placeholderTextSize = 17f
+                placeholderTextSize = 15f
             )
         }
-        Box(modifier = Modifier.fillMaxHeight().weight(1f).padding(5.dp), contentAlignment = Alignment.Center){
+        Box(modifier = Modifier.fillMaxSize().padding(5.dp), contentAlignment = Alignment.CenterEnd){
 
-            Box(modifier = Modifier.size(45.dp).background(color = Orange, shape = CircleShape), contentAlignment = Alignment.Center){
+            Box(modifier = Modifier.size(40.dp).background(color = Orange, shape = CircleShape), contentAlignment = Alignment.Center){
 
                 ImageComponent(modifier = Modifier
                     .size(18.dp), imageRes = R.drawable.filter, colorFilter = ColorFilter.tint(color = Color.White))
@@ -95,24 +93,23 @@ fun SearchBarWidget(onFocused:() -> Unit, onValueChange:(String) -> Unit) {
 
 @Composable
 fun HomeSearchBarWidget(onFocused:() -> Unit) {
+    var text by remember { mutableStateOf("") }
     val modifier  = Modifier
         .fillMaxWidth()
         .height(50.dp)
         .background(color = Color.White, shape = CircleShape)
 
-    Row(modifier = modifier,
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically) {
+    Box(modifier = modifier) {
 
-        Box(modifier = Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center){
+        Box(modifier = Modifier.height(50.dp).width(40.dp), contentAlignment = Alignment.Center){
             ImageComponent(modifier = Modifier
-                .size(18.dp), imageRes = R.drawable.search, colorFilter = ColorFilter.tint(color = PrimaryColor))
+                .size(16.dp), imageRes = R.drawable.search, colorFilter = ColorFilter.tint(color = PrimaryColor))
         }
 
-        Box(modifier = Modifier.fillMaxHeight().weight(6f), contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier.fillMaxSize().padding(start = 40.dp, end = 50.dp), contentAlignment = Alignment.Center) {
             TextComponent(
                 text = "Enter the receipt number...",
-                fontSize = 18,
+                fontSize = 16,
                 textStyle = MaterialTheme.typography.titleMedium,
                 textColor = DarkGray,
                 textAlign = TextAlign.Left,
@@ -126,9 +123,9 @@ fun HomeSearchBarWidget(onFocused:() -> Unit) {
                 },
             )
         }
-        Box(modifier = Modifier.fillMaxHeight().weight(1f).padding(5.dp), contentAlignment = Alignment.Center){
+        Box(modifier = Modifier.fillMaxSize().padding(5.dp), contentAlignment = Alignment.CenterEnd){
 
-            Box(modifier = Modifier.size(45.dp).background(color = Orange, shape = CircleShape), contentAlignment = Alignment.Center){
+            Box(modifier = Modifier.size(40.dp).background(color = Orange, shape = CircleShape), contentAlignment = Alignment.Center){
 
                 ImageComponent(modifier = Modifier
                     .size(18.dp), imageRes = R.drawable.filter, colorFilter = ColorFilter.tint(color = Color.White))

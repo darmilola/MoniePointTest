@@ -68,7 +68,7 @@ fun SearchReceiptScreen(onBackPressed:() -> Unit, sharedTransitionScope: SharedT
                     colors = CardDefaults.cardColors(containerColor = Color.White),
                     elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                     shape = RoundedCornerShape(15.dp),
-                    modifier = Modifier.fillMaxWidth().height(500.dp)
+                    modifier = Modifier.fillMaxWidth().height(400.dp)
                 ) {
                     val list = populateList()
                     LazyColumn(modifier = Modifier.fillMaxSize()) {

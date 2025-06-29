@@ -91,7 +91,7 @@ fun SenderWidget(){
             }
 
         }
-        Column(modifier = Modifier.fillMaxHeight().weight(1f),horizontalAlignment = Alignment.Start, verticalArrangement = Arrangement.Center) {
+        Column(modifier = Modifier.fillMaxHeight().weight(1.5f),horizontalAlignment = Alignment.Start, verticalArrangement = Arrangement.Center) {
 
 
             Box(
