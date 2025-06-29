@@ -42,6 +42,8 @@ import com.assignment.moniepointtest.presentation.home.widget.ShipmentNumberWidg
 import com.assignment.moniepointtest.presentation.home.widget.TopBarProfile
 import com.assignment.moniepointtest.ui.theme.LessWhite
 import com.assignment.moniepointtest.ui.theme.LightGray
+import com.assignment.moniepointtest.ui.theme.MoniePointTestLightTheme
+import com.assignment.moniepointtest.ui.theme.MoniePointTestTheme
 import com.assignment.moniepointtest.ui.theme.PrimaryColor
 import presentations.components.TextComponent
 
@@ -52,97 +54,103 @@ fun HomeScreen(
     sharedTransitionScope: SharedTransitionScope,
     animatedContentScope: AnimatedContentScope
 ) {
-    val boundsTransform = { _: Rect, _: Rect -> tween<Rect>(400) }
-    with(sharedTransitionScope) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(LessWhite),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-
+    MoniePointTestTheme {
+        val boundsTransform = { _: Rect, _: Rect -> tween<Rect>(400) }
+        with(sharedTransitionScope) {
             Column(
-                modifier = Modifier.fillMaxWidth().height(150.dp).background(color = PrimaryColor)
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(LessWhite),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
 
-                Box(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
-                    TopBarProfile()
-                }
-
-                Box(
-                    modifier = Modifier
-                        .sharedElement(
-                            rememberSharedContentState(key = "searchWidget"),
-                            animatedVisibilityScope = animatedContentScope,
-                            boundsTransform = boundsTransform)
-                        .fillMaxWidth().wrapContentHeight()
-                        .padding(end = 10.dp, start = 10.dp, top = 20.dp)
+                Column(
+                    modifier = Modifier.fillMaxWidth().height(150.dp)
+                        .background(color = PrimaryColor)
                 ) {
-                    HomeSearchBarWidget(onFocused = {
-                        onEnterReceiptFocused()
-                    })
-                }
-            }
 
-            Column(
-                modifier = Modifier.fillMaxWidth().fillMaxHeight().background(color = LessWhite)
-                    .verticalScroll(rememberScrollState())
-            ) {
-
-                Column(modifier = Modifier.fillMaxWidth().height(360.dp)) {
-
-                    Box(
-                        modifier = Modifier.height(60.dp).fillMaxWidth()
-                            .padding(start = 20.dp, top = 10.dp),
-                        contentAlignment = Alignment.CenterStart
-                    ) {
-                        TextComponent(
-                            text = "Tracking",
-                            fontSize = 18,
-                            textStyle = MaterialTheme.typography.titleMedium,
-                            textColor = Color.Black,
-                            textAlign = TextAlign.Left,
-                            fontWeight = FontWeight.Medium,
-                            fontFamily = monaSansFamily,
-                            lineHeight = 30,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            textModifier = Modifier.fillMaxWidth()
-                        )
+                    Box(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+                        TopBarProfile()
                     }
 
                     Box(
-                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                            .padding(start = 15.dp, top = 10.dp, end = 15.dp),
-                        contentAlignment = Alignment.CenterStart
+                        modifier = Modifier
+                            .sharedElement(
+                                rememberSharedContentState(key = "searchWidget"),
+                                animatedVisibilityScope = animatedContentScope,
+                                boundsTransform = boundsTransform
+                            )
+                            .fillMaxWidth().wrapContentHeight()
+                            .padding(end = 10.dp, start = 10.dp, top = 20.dp)
                     ) {
+                        HomeSearchBarWidget(onFocused = {
+                            onEnterReceiptFocused()
+                        })
+                    }
+                }
 
-                        Card(
-                            colors = CardDefaults.cardColors(containerColor = Color.White),
-                            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-                            shape = RoundedCornerShape(15.dp),
-                            modifier = Modifier.fillMaxWidth().height(280.dp)
+                Column(
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight().background(color = LessWhite)
+                        .verticalScroll(rememberScrollState())
+                ) {
+
+                    Column(modifier = Modifier.fillMaxWidth().height(360.dp)) {
+
+                        Box(
+                            modifier = Modifier.height(60.dp).fillMaxWidth()
+                                .padding(start = 20.dp, top = 10.dp),
+                            contentAlignment = Alignment.CenterStart
+                        ) {
+                            TextComponent(
+                                text = "Tracking",
+                                fontSize = 18,
+                                textStyle = MaterialTheme.typography.titleMedium,
+                                textColor = Color.Black,
+                                textAlign = TextAlign.Left,
+                                fontWeight = FontWeight.Medium,
+                                fontFamily = monaSansFamily,
+                                lineHeight = 30,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                textModifier = Modifier.fillMaxWidth()
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                                .padding(start = 15.dp, top = 10.dp, end = 15.dp),
+                            contentAlignment = Alignment.CenterStart
                         ) {
 
-                            Column(modifier = Modifier.fillMaxWidth().height(280.dp)) {
-                                ShipmentNumberWidget()
-                                Box(
-                                    modifier = Modifier.fillMaxWidth().height(1.dp)
-                                        .padding(start = 15.dp, end = 15.dp)
-                                ) {
+                            Card(
+                                colors = CardDefaults.cardColors(containerColor = Color.White),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+                                shape = RoundedCornerShape(15.dp),
+                                modifier = Modifier.fillMaxWidth().height(280.dp)
+                            ) {
+
+                                Column(modifier = Modifier.fillMaxWidth().height(280.dp)) {
+                                    ShipmentNumberWidget()
+                                    Box(
+                                        modifier = Modifier.fillMaxWidth().height(1.dp)
+                                            .padding(start = 15.dp, end = 15.dp)
+                                    ) {
+                                        Box(
+                                            modifier = Modifier.fillMaxWidth().height(1.dp)
+                                                .background(color = LightGray)
+                                        )
+                                    }
+                                    SenderWidget()
+                                    ReceiverWidget()
                                     Box(
                                         modifier = Modifier.fillMaxWidth().height(1.dp)
                                             .background(color = LightGray)
                                     )
+                                    AddStopWidget()
                                 }
-                                SenderWidget()
-                                ReceiverWidget()
-                                Box(
-                                    modifier = Modifier.fillMaxWidth().height(1.dp)
-                                        .background(color = LightGray)
-                                )
-                                AddStopWidget()
+
+
                             }
 
 
@@ -152,63 +160,61 @@ fun HomeScreen(
                     }
 
 
-                }
+
+                    Column(modifier = Modifier.fillMaxWidth().height(380.dp)) {
+
+                        Box(
+                            modifier = Modifier.height(60.dp).fillMaxWidth()
+                                .padding(start = 20.dp),
+                            contentAlignment = Alignment.CenterStart
+                        ) {
+                            TextComponent(
+                                text = "Available vehicles",
+                                fontSize = 18,
+                                textStyle = MaterialTheme.typography.titleMedium,
+                                textColor = Color.Black,
+                                textAlign = TextAlign.Left,
+                                fontWeight = FontWeight.Medium,
+                                fontFamily = monaSansFamily,
+                                lineHeight = 30,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                textModifier = Modifier.fillMaxWidth()
+                            )
+                        }
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth().wrapContentHeight().horizontalScroll(
+                                rememberScrollState()
+                            )
+                        ) {
+
+                            AvailableVehicleWidget(
+                                freightName = "Ocean Freight",
+                                tag = "International",
+                                imageRes = R.drawable.ocean_feight
+                            )
+                            AvailableVehicleWidget(
+                                freightName = "Cargo Freight",
+                                tag = "Reliable",
+                                imageRes = R.drawable.cargo_freight
+                            )
+                            AvailableVehicleWidget(
+                                freightName = "Air Freight",
+                                tag = "International",
+                                imageRes = R.drawable.ocean_feight
+                            )
 
 
+                        }
 
-                Column(modifier = Modifier.fillMaxWidth().height(380.dp)) {
-
-                    Box(
-                        modifier = Modifier.height(60.dp).fillMaxWidth()
-                            .padding(start = 20.dp),
-                        contentAlignment = Alignment.CenterStart
-                    ) {
-                        TextComponent(
-                            text = "Available vehicles",
-                            fontSize = 18,
-                            textStyle = MaterialTheme.typography.titleMedium,
-                            textColor = Color.Black,
-                            textAlign = TextAlign.Left,
-                            fontWeight = FontWeight.Medium,
-                            fontFamily = monaSansFamily,
-                            lineHeight = 30,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            textModifier = Modifier.fillMaxWidth()
-                        )
                     }
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth().wrapContentHeight().horizontalScroll(
-                            rememberScrollState()
-                        )
-                    ) {
-
-                        AvailableVehicleWidget(
-                            freightName = "Ocean Freight",
-                            tag = "International",
-                            imageRes = R.drawable.ocean_feight
-                        )
-                        AvailableVehicleWidget(
-                            freightName = "Cargo Freight",
-                            tag = "Reliable",
-                            imageRes = R.drawable.cargo_freight
-                        )
-                        AvailableVehicleWidget(
-                            freightName = "Air Freight",
-                            tag = "International",
-                            imageRes = R.drawable.ocean_feight
-                        )
-
-
-                    }
 
                 }
 
 
             }
-
-
         }
     }
 }

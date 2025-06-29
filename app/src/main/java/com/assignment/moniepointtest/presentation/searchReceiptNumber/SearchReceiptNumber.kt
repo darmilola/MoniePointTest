@@ -35,6 +35,7 @@ import com.assignment.moniepointtest.presentation.searchReceiptNumber.widget.Sea
 import com.assignment.moniepointtest.presentation.searchReceiptNumber.widget.TopBarBarWidget
 import com.assignment.moniepointtest.ui.theme.LessWhite
 import com.assignment.moniepointtest.ui.theme.LightGray
+import com.assignment.moniepointtest.ui.theme.MoniePointTestTheme
 import com.assignment.moniepointtest.ui.theme.PrimaryColor
 
 @OptIn(ExperimentalSharedTransitionApi::class)
@@ -42,6 +43,7 @@ import com.assignment.moniepointtest.ui.theme.PrimaryColor
 fun SearchReceiptScreen(onBackPressed:() -> Unit, sharedTransitionScope: SharedTransitionScope,
                         animatedContentScope: AnimatedContentScope
 ) {
+    MoniePointTestTheme {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -72,12 +74,10 @@ fun SearchReceiptScreen(onBackPressed:() -> Unit, sharedTransitionScope: SharedT
                 ) {
                     val list = populateList()
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
-                        items(list){ item: SearchReceiptItem ->
+                        items(list) { item: SearchReceiptItem ->
                             SearchShipmentNumberWidget(item)
                         }
                     }
-
-
 
 
                 }
@@ -87,6 +87,7 @@ fun SearchReceiptScreen(onBackPressed:() -> Unit, sharedTransitionScope: SharedT
 
         }
 
+    }
 }
 
 fun populateList():ArrayList<SearchReceiptItem>{

@@ -1,6 +1,7 @@
 package com.assignment.moniepointtest.presentation.calculate
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.assignment.moniepointtest.R
 import com.assignment.moniepointtest.components.monaSansFamily
 import com.assignment.moniepointtest.model.CategoryItemModel
@@ -42,258 +44,290 @@ import com.assignment.moniepointtest.presentation.calculate.widgets.DestinationW
 import com.assignment.moniepointtest.presentation.calculate.widgets.DropDownWidget
 import com.assignment.moniepointtest.ui.theme.DarkGray
 import com.assignment.moniepointtest.ui.theme.LessWhite
+import com.assignment.moniepointtest.ui.theme.MoniePointTestTheme
 import com.assignment.moniepointtest.ui.theme.PrimaryColor
 import presentations.components.TextComponent
 
 @Composable
-fun CalculateScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(LessWhite)
-    ) {
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth().height(50.dp).background(color = PrimaryColor),
-            contentAlignment = Alignment.Center
-        ) {
-           CalculateTopBarWidget()
-        }
-
+fun CalculateScreen(onNavigateToEstimate:() -> Unit) {
+    MoniePointTestTheme {
         Column(
-            modifier = Modifier.fillMaxWidth().fillMaxHeight().background(color = LessWhite)
-                .verticalScroll(rememberScrollState())
+            modifier = Modifier
+                .fillMaxSize()
+                .background(LessWhite)
         ) {
 
-            Column(modifier = Modifier.fillMaxWidth().height(330.dp)) {
-
-                Box(
-                    modifier = Modifier.height(60.dp).fillMaxWidth()
-                        .padding(start = 20.dp, top = 10.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    TextComponent(
-                        text = "Destination",
-                        fontSize = 20,
-                        textStyle = MaterialTheme.typography.titleMedium,
-                        textColor = Color.Black,
-                        textAlign = TextAlign.Left,
-                        fontWeight = FontWeight.Medium,
-                        fontFamily = monaSansFamily,
-                        lineHeight = 30,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        textModifier = Modifier.fillMaxWidth()
-                    )
-                }
-
-                Box(
-                    modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                        .padding(start = 15.dp, top = 5.dp, end = 15.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-
-                    Card(
-                        colors = CardDefaults.cardColors(containerColor = Color.White),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-                        shape = RoundedCornerShape(15.dp),
-                        modifier = Modifier.fillMaxWidth().height(250.dp)
-                    ) {
-
-                        Column(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
-                            Box(modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(top = 15.dp, start = 15.dp, end = 15.dp)){
-                                DestinationWidget(icon = R.drawable.top_up, placeholder = "Sender location") {
-
-                                }
-                            }
-                            Box(modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(top = 15.dp, start = 15.dp, end = 15.dp)){
-                                DestinationWidget(icon = R.drawable.down_right_arrow, placeholder = "Receiver location") {
-
-                                }
-                            }
-                            Box(modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(top = 15.dp, start = 15.dp, end = 15.dp)){
-                                DestinationWidget(icon = R.drawable.scale, placeholder = "Approx location") {
-
-                                }
-                            }
-                        }
-
-                    }
-
-                }
-
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth().height(50.dp).background(color = PrimaryColor),
+                contentAlignment = Alignment.Center
+            ) {
+                CalculateTopBarWidget()
             }
 
+            Column(
+                modifier = Modifier.fillMaxWidth().fillMaxHeight().background(color = LessWhite)
+                    .verticalScroll(rememberScrollState())
+            ) {
 
-            Column(modifier = Modifier.fillMaxWidth().height(150.dp)) {
+                Column(modifier = Modifier.fillMaxWidth().height(330.dp)) {
 
-                Box(
-                    modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                        .padding(start = 20.dp, top = 10.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    TextComponent(
-                        text = "Packaging",
-                        fontSize = 20,
-                        textStyle = MaterialTheme.typography.titleMedium,
-                        textColor = Color.Black,
-                        textAlign = TextAlign.Left,
-                        fontWeight = FontWeight.Medium,
-                        fontFamily = monaSansFamily,
-                        lineHeight = 30,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        textModifier = Modifier.fillMaxWidth()
-                    )
-                }
-
-                Box(
-                    modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                        .padding(start = 20.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    TextComponent(
-                        text = "What are you sending?",
-                        fontSize = 18,
-                        textStyle = MaterialTheme.typography.titleMedium,
-                        textColor = DarkGray,
-                        textAlign = TextAlign.Left,
-                        fontWeight = FontWeight.Medium,
-                        fontFamily = monaSansFamily,
-                        lineHeight = 30,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        textModifier = Modifier.fillMaxWidth()
-                    )
-                }
-
-                Box(
-                    modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                        .padding(start = 15.dp, top = 15.dp, end = 15.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-
-                    Card(
-                        colors = CardDefaults.cardColors(containerColor = Color.White),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-                        shape = RoundedCornerShape(15.dp),
-                        modifier = Modifier.fillMaxWidth().height(60.dp)
+                    Box(
+                        modifier = Modifier.height(60.dp).fillMaxWidth()
+                            .padding(start = 20.dp, top = 10.dp),
+                        contentAlignment = Alignment.CenterStart
                     ) {
-                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                            DropDownWidget()
-                        }
-
-                    }
-
-                }
-
-            }
-
-            Column(modifier = Modifier.fillMaxWidth().height(300.dp)) {
-
-                Box(
-                    modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                        .padding(start = 20.dp, top = 20.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    TextComponent(
-                        text = "Categories",
-                        fontSize = 20,
-                        textStyle = MaterialTheme.typography.titleMedium,
-                        textColor = Color.Black,
-                        textAlign = TextAlign.Left,
-                        fontWeight = FontWeight.Medium,
-                        fontFamily = monaSansFamily,
-                        lineHeight = 30,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        textModifier = Modifier.fillMaxWidth()
-                    )
-                }
-
-                Box(
-                    modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                        .padding(start = 20.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    TextComponent(
-                        text = "What are you sending?",
-                        fontSize = 18,
-                        textStyle = MaterialTheme.typography.titleMedium,
-                        textColor = DarkGray,
-                        textAlign = TextAlign.Left,
-                        fontWeight = FontWeight.Medium,
-                        fontFamily = monaSansFamily,
-                        lineHeight = 30,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        textModifier = Modifier.fillMaxWidth()
-                    )
-                }
-
-                Box(
-                    modifier = Modifier.wrapContentHeight().fillMaxWidth()
-                        .padding(start = 15.dp, top = 10.dp, end = 15.dp),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-
-                    val categoryList = populateCategoryList()
-
-                    var categoryItemModelUIModel by remember {
-                        mutableStateOf(
-                            CategoryItemUIModel(
-                                selectedCategory = CategoryItemModel(),
-                                categoryList
-                            )
+                        TextComponent(
+                            text = "Destination",
+                            fontSize = 20,
+                            textStyle = MaterialTheme.typography.titleMedium,
+                            textColor = Color.Black,
+                            textAlign = TextAlign.Left,
+                            fontWeight = FontWeight.Medium,
+                            fontFamily = monaSansFamily,
+                            lineHeight = 30,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            textModifier = Modifier.fillMaxWidth()
                         )
                     }
 
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(3),
-                        modifier = Modifier.fillMaxWidth().height(300.dp),
-                        verticalArrangement = Arrangement.spacedBy(2.dp),
-                        userScrollEnabled = false,
-                        horizontalArrangement = Arrangement.spacedBy(2.dp)
+                    Box(
+                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                            .padding(start = 15.dp, top = 5.dp, end = 15.dp),
+                        contentAlignment = Alignment.CenterStart
                     ) {
 
-                        items(categoryItemModelUIModel.visibleCategory.size) { i ->
-                           CategoryItem(categoryItemModelUIModel.visibleCategory[i], onCategorySelectedListener = { it ->
-                                categoryItemModelUIModel = categoryItemModelUIModel.copy(
-                                    selectedCategory = it,
-                                    visibleCategory = categoryItemModelUIModel.visibleCategory.map { it2 ->
-                                        it2.copy(
-                                            isSelected = it2.categoryId == it.categoryId
-                                        )
-                                    }
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+                            shape = RoundedCornerShape(15.dp),
+                            modifier = Modifier.fillMaxWidth().height(250.dp)
+                        ) {
 
-                                )
-                            })
+                            Column(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth().wrapContentHeight()
+                                        .padding(top = 15.dp, start = 15.dp, end = 15.dp)
+                                ) {
+                                    DestinationWidget(
+                                        icon = R.drawable.top_up,
+                                        placeholder = "Sender location"
+                                    ) {
+
+                                    }
+                                }
+                                Box(
+                                    modifier = Modifier.fillMaxWidth().wrapContentHeight()
+                                        .padding(top = 15.dp, start = 15.dp, end = 15.dp)
+                                ) {
+                                    DestinationWidget(
+                                        icon = R.drawable.down_right_arrow,
+                                        placeholder = "Receiver location"
+                                    ) {
+
+                                    }
+                                }
+                                Box(
+                                    modifier = Modifier.fillMaxWidth().wrapContentHeight()
+                                        .padding(top = 15.dp, start = 15.dp, end = 15.dp)
+                                ) {
+                                    DestinationWidget(
+                                        icon = R.drawable.scale,
+                                        placeholder = "Approx location"
+                                    ) {
+
+                                    }
+                                }
+                            }
+
                         }
 
                     }
 
                 }
 
+
+                Column(modifier = Modifier.fillMaxWidth().height(150.dp)) {
+
+                    Box(
+                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                            .padding(start = 20.dp, top = 10.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
+                        TextComponent(
+                            text = "Packaging",
+                            fontSize = 20,
+                            textStyle = MaterialTheme.typography.titleMedium,
+                            textColor = Color.Black,
+                            textAlign = TextAlign.Left,
+                            fontWeight = FontWeight.Medium,
+                            fontFamily = monaSansFamily,
+                            lineHeight = 30,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            textModifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                            .padding(start = 20.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
+                        TextComponent(
+                            text = "What are you sending?",
+                            fontSize = 18,
+                            textStyle = MaterialTheme.typography.titleMedium,
+                            textColor = DarkGray,
+                            textAlign = TextAlign.Left,
+                            fontWeight = FontWeight.Medium,
+                            fontFamily = monaSansFamily,
+                            lineHeight = 30,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            textModifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                            .padding(start = 15.dp, top = 15.dp, end = 15.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
+
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+                            shape = RoundedCornerShape(15.dp),
+                            modifier = Modifier.fillMaxWidth().height(60.dp)
+                        ) {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                DropDownWidget()
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                Column(modifier = Modifier.fillMaxWidth().height(300.dp)) {
+
+                    Box(
+                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                            .padding(start = 20.dp, top = 20.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
+                        TextComponent(
+                            text = "Categories",
+                            fontSize = 20,
+                            textStyle = MaterialTheme.typography.titleMedium,
+                            textColor = Color.Black,
+                            textAlign = TextAlign.Left,
+                            fontWeight = FontWeight.Medium,
+                            fontFamily = monaSansFamily,
+                            lineHeight = 30,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            textModifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                            .padding(start = 20.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
+                        TextComponent(
+                            text = "What are you sending?",
+                            fontSize = 18,
+                            textStyle = MaterialTheme.typography.titleMedium,
+                            textColor = DarkGray,
+                            textAlign = TextAlign.Left,
+                            fontWeight = FontWeight.Medium,
+                            fontFamily = monaSansFamily,
+                            lineHeight = 30,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            textModifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier.wrapContentHeight().fillMaxWidth()
+                            .padding(start = 15.dp, top = 10.dp, end = 15.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
+
+                        val categoryList = populateCategoryList()
+
+                        var categoryItemModelUIModel by remember {
+                            mutableStateOf(
+                                CategoryItemUIModel(
+                                    selectedCategory = CategoryItemModel(),
+                                    categoryList
+                                )
+                            )
+                        }
+
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(3),
+                            modifier = Modifier.fillMaxWidth().height(300.dp),
+                            verticalArrangement = Arrangement.spacedBy(2.dp),
+                            userScrollEnabled = false,
+                            horizontalArrangement = Arrangement.spacedBy(2.dp)
+                        ) {
+
+                            items(categoryItemModelUIModel.visibleCategory.size) { i ->
+                                CategoryItem(
+                                    categoryItemModelUIModel.visibleCategory[i],
+                                    onCategorySelectedListener = { it ->
+                                        categoryItemModelUIModel = categoryItemModelUIModel.copy(
+                                            selectedCategory = it,
+                                            visibleCategory = categoryItemModelUIModel.visibleCategory.map { it2 ->
+                                                it2.copy(
+                                                    isSelected = it2.categoryId == it.categoryId
+                                                )
+                                            }
+
+                                        )
+                                    })
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                Box(
+                    modifier = Modifier.fillMaxWidth().height(70.dp).clickable {
+                        onNavigateToEstimate()
+                    }.padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
+                        .background(color = Color(0xffee8a3c), shape = CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    TextComponent(
+                        text = "Calculate",
+                        fontSize = 18,
+                        textStyle = MaterialTheme.typography.titleMedium,
+                        textColor = Color.White,
+                        textAlign = TextAlign.Left,
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = monaSansFamily,
+                        lineHeight = 30,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        textModifier = Modifier.wrapContentWidth()
+                    )
+                }
             }
 
-            Box(modifier = Modifier.fillMaxWidth().height(70.dp).padding(start = 20.dp, end = 20.dp, bottom = 20.dp).background(color = Color(0xffee8a3c), shape = CircleShape), contentAlignment = Alignment.Center) {
-                TextComponent(
-                    text = "Calculate",
-                    fontSize = 18,
-                    textStyle = MaterialTheme.typography.titleMedium,
-                    textColor = Color.White,
-                    textAlign = TextAlign.Left,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = monaSansFamily,
-                    lineHeight = 30,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    textModifier = Modifier.wrapContentWidth()
-                )
-            }
         }
-
     }
 }
 

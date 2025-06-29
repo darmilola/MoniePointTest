@@ -59,4 +59,5 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.9.0")
     implementation("androidx.compose.animation:animation:1.8.3")
     implementation("androidx.compose.ui:ui:1.8.3")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
 }

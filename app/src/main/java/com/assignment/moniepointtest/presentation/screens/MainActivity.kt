@@ -48,6 +48,7 @@ import androidx.navigation.compose.rememberNavController
 import com.assignment.moniepointtest.R
 import com.assignment.moniepointtest.components.monaSansFamily
 import com.assignment.moniepointtest.presentation.calculate.CalculateScreen
+import com.assignment.moniepointtest.presentation.estimates.EstimateScreen
 import com.assignment.moniepointtest.presentation.home.HomeScreen
 import com.assignment.moniepointtest.presentation.profile.ProfileScreen
 import com.assignment.moniepointtest.presentation.searchReceiptNumber.SearchReceiptScreen
@@ -68,12 +69,7 @@ class MainActivity : ComponentActivity() {
                 Surface(color = Color.White) {
                     // Scaffold Component
                     Scaffold(
-                        topBar = {
-                          Box(modifier = Modifier
-                              .height(50.dp)
-                              .fillMaxWidth()
-                              .background(color = PrimaryColor))
-                        },
+                        topBar = {},
                         // Bottom navigation
                         bottomBar = {
                             Card(colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -153,7 +149,9 @@ fun NavHostContainer(
 
                 // route : calculate
                 composable(Screen.CalculateScreen.route) {
-                    CalculateScreen()
+                    CalculateScreen(onNavigateToEstimate = {
+                        navController.navigate(Screen.EstimateScreen.route)
+                    })
                 }
 
                 // route : shipment
@@ -164,6 +162,11 @@ fun NavHostContainer(
                 // route : profile
                 composable(Screen.ProfileScreen.route) {
                     ProfileScreen()
+                }
+
+                // route : estimate
+                composable(Screen.EstimateScreen.route) {
+                    EstimateScreen()
                 }
 
                 // route : Search Receipt Number
