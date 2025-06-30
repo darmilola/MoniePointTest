@@ -29,7 +29,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.assignment.moniepointtest.model.ShipmentTabTitleModel
 import com.assignment.moniepointtest.presentation.calculate.widgets.CalculateTopBarWidget
+import com.assignment.moniepointtest.presentation.shipment.tabs.AllTab
+import com.assignment.moniepointtest.presentation.shipment.tabs.CompletedTab
 import com.assignment.moniepointtest.presentation.shipment.tabs.InProgressTab
+import com.assignment.moniepointtest.presentation.shipment.tabs.PendingOrderTab
 import com.assignment.moniepointtest.presentation.shipment.tabs.ShipmentTopBarWidget
 import com.assignment.moniepointtest.presentation.shipment.widget.CustomTabTitle
 import com.assignment.moniepointtest.ui.theme.LessWhite
@@ -80,9 +83,12 @@ fun ShipmentScreen() {
                     }
                 }
                 when (tabIndex) {
-                    0 -> InProgressTab()
-                    1 -> InProgressTab()
+                    0 -> AllTab()
+                    1 -> CompletedTab()
                     2 -> InProgressTab()
+                    3 -> PendingOrderTab()
+                    4 -> AllTab()
+
                 }
             }
         }
