@@ -59,7 +59,7 @@ fun CalculateScreen(onNavigateToEstimate:() -> Unit) {
 
             Box(
                 modifier = Modifier
-                    .fillMaxWidth().height(50.dp).background(color = PrimaryColor),
+                    .fillMaxWidth().height(40.dp).background(color = PrimaryColor),
                 contentAlignment = Alignment.Center
             ) {
                 CalculateTopBarWidget()
