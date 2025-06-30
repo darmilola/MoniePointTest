@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.assignment.moniepointtest.ui.theme.LessWhite
 import com.assignment.moniepointtest.ui.theme.MoniePointTestTheme
 
 @Composable
@@ -20,19 +21,12 @@ fun ProfileScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White),
+                .background(LessWhite),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-        ) {
-            // Icon on the screen
-            Icon(
-                imageVector = Icons.Default.Person,
-                contentDescription = "Profile",
-                tint = Color(0xFF0F9D58)
-            )
-            // Text on the screen
-            Text(text = "Profile", color = Color.Black)
-        }
+        ) {}
     }
 }
+
+
 

@@ -63,7 +63,7 @@ fun ShipmentHistoryItemWidget(shippingModel: ShippingModel) {
 
                 TextComponent(
                     text = "Arriving today!",
-                    fontSize = 20,
+                    fontSize = 18,
                     textStyle = MaterialTheme.typography.titleMedium,
                     textColor = Color.Black,
                     textAlign = TextAlign.Left,
@@ -77,11 +77,11 @@ fun ShipmentHistoryItemWidget(shippingModel: ShippingModel) {
 
                 TextComponent(
                     text = "Your delivery, #NEJ20089934122231",
-                    fontSize = 16,
+                    fontSize = 15,
                     textStyle = MaterialTheme.typography.titleMedium,
                     textColor = Color(0xff8d8d8d),
                     textAlign = TextAlign.Left,
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.Normal,
                     fontFamily = monaSansFamily,
                     lineHeight = 20,
                     maxLines = 1,
@@ -90,11 +90,11 @@ fun ShipmentHistoryItemWidget(shippingModel: ShippingModel) {
                 )
                 TextComponent(
                     text = "from Atlanta, is arriving today!",
-                    fontSize = 16,
+                    fontSize = 15,
                     textStyle = MaterialTheme.typography.titleMedium,
                     textColor = Color(0xff8d8d8d),
                     textAlign = TextAlign.Left,
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.Normal,
                     fontFamily = monaSansFamily,
                     lineHeight = 20,
                     maxLines = 1,
@@ -106,7 +106,7 @@ fun ShipmentHistoryItemWidget(shippingModel: ShippingModel) {
 
                     TextComponent(
                         text = "$1400 USD",
-                        fontSize = 18,
+                        fontSize = 16,
                         textStyle = MaterialTheme.typography.titleMedium,
                         textColor = PrimaryColor,
                         textAlign = TextAlign.Left,
@@ -129,9 +129,9 @@ fun ShipmentHistoryItemWidget(shippingModel: ShippingModel) {
                         textStyle = MaterialTheme.typography.titleMedium,
                         textColor = Color(0xff3a3e51),
                         textAlign = TextAlign.Left,
-                        fontWeight = FontWeight.Medium,
+                        fontWeight = FontWeight.Normal,
                         fontFamily = monaSansFamily,
-                        lineHeight = 18,
+                        lineHeight = 16,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textModifier = Modifier.wrapContentWidth().padding(start = 10.dp)
