@@ -166,7 +166,9 @@ fun NavHostContainer(
 
                 // route : estimate
                 composable(Screen.EstimateScreen.route) {
-                    EstimateScreen()
+                    EstimateScreen(onBackHomeClicked = {
+                        navController.navigate(Screen.HomeScreen.route)
+                    })
                 }
 
                 // route : Search Receipt Number

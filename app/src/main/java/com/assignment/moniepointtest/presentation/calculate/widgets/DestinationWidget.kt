@@ -66,7 +66,7 @@ fun DestinationWidget(icon:Int, placeholder: String, onValueChange:(String) -> U
                 placeholderText = placeholder,
                 onFocusChange = { it -> },
                 isPasswordField = false,
-                placeholderTextSize = 18f
+                placeholderTextSize = 16f
             )
         }
     }

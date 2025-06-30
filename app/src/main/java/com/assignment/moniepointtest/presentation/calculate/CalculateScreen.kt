@@ -79,7 +79,7 @@ fun CalculateScreen(onNavigateToEstimate:() -> Unit) {
                     ) {
                         TextComponent(
                             text = "Destination",
-                            fontSize = 20,
+                            fontSize = 18,
                             textStyle = MaterialTheme.typography.titleMedium,
                             textColor = Color.Black,
                             textAlign = TextAlign.Left,
@@ -157,7 +157,7 @@ fun CalculateScreen(onNavigateToEstimate:() -> Unit) {
                     ) {
                         TextComponent(
                             text = "Packaging",
-                            fontSize = 20,
+                            fontSize = 18,
                             textStyle = MaterialTheme.typography.titleMedium,
                             textColor = Color.Black,
                             textAlign = TextAlign.Left,
@@ -177,7 +177,7 @@ fun CalculateScreen(onNavigateToEstimate:() -> Unit) {
                     ) {
                         TextComponent(
                             text = "What are you sending?",
-                            fontSize = 18,
+                            fontSize = 16,
                             textStyle = MaterialTheme.typography.titleMedium,
                             textColor = DarkGray,
                             textAlign = TextAlign.Left,
@@ -224,7 +224,7 @@ fun CalculateScreen(onNavigateToEstimate:() -> Unit) {
                     ) {
                         TextComponent(
                             text = "Categories",
-                            fontSize = 20,
+                            fontSize = 18,
                             textStyle = MaterialTheme.typography.titleMedium,
                             textColor = Color.Black,
                             textAlign = TextAlign.Left,
@@ -244,7 +244,7 @@ fun CalculateScreen(onNavigateToEstimate:() -> Unit) {
                     ) {
                         TextComponent(
                             text = "What are you sending?",
-                            fontSize = 18,
+                            fontSize = 16,
                             textStyle = MaterialTheme.typography.titleMedium,
                             textColor = DarkGray,
                             textAlign = TextAlign.Left,

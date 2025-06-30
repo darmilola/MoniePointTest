@@ -63,7 +63,7 @@ fun CategoryItem(categoryItemModel: CategoryItemModel, onCategorySelectedListene
         modifier = Modifier
             .padding(start = 3.dp, end = 3.dp, top = 10.dp)
             .wrapContentWidth()
-            .defaultMinSize(minWidth = 120.dp)
+            .defaultMinSize(minWidth = 150.dp)
             .clickable {
                 onCategorySelectedListener(categoryItemModel)
             }
@@ -87,7 +87,7 @@ fun CategoryItem(categoryItemModel: CategoryItemModel, onCategorySelectedListene
             fontWeight = FontWeight.Medium,
             fontFamily = monaSansFamily,
             lineHeight = 30,
-            textModifier = Modifier.padding(start = 5.dp))
+            textModifier = Modifier.padding(start = 3.dp))
 
     }
 }
